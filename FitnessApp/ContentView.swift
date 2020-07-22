@@ -10,7 +10,6 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         Home()
-            .preferredColorScheme(.dark)
     }
 }
 
@@ -40,9 +39,21 @@ struct Home: View {
                             .foregroundColor(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)))
                     }
                 }
-                .padding()
+                .padding(.horizontal, 30)
+                
+                //Bar Chart
+                VStack(alignment: .leading, spacing: 25) {
+                    Text("Daily Workout in Hrs")
+                        .font(.system(size: 22))
+                        .fontWeight(.bold)
+                        .foregroundColor(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)))
+                }
             }
         }
         .background(Color.black.edgesIgnoringSafeArea(.all))
+        .preferredColorScheme(.dark)
     }
 }
+
+//Sample Data..
+
