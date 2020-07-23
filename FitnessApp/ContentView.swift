@@ -57,3 +57,17 @@ struct Home: View {
 
 //Sample Data..
 
+struct Daily : Identifiable {
+    var id : Int
+    var day : String
+    var workout_In_Min : CGFloat
+}
+
+var workout_Data = [
+
+    Daily(id: 0, day: "Day 1", workout_In_Min: 480),
+    Daily(id: 1, day: "Day 2", workout_In_Min: 880),
+    Daily(id: 2, day: "Day 3", workout_In_Min: 250),
+    Daily(id: 3, day: "Day 4", workout_In_Min: <#T##CGFloat#>)
+
+]
