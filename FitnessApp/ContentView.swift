@@ -55,7 +55,7 @@ struct Home: View {
                                     .foregroundColor(Color("Color"))
                                 
                                 Rectangle()
-                                    .fill(LinearGradient(gradient: .init(colors: [Color("Color"),Color("Color")]), startPoint: .top, endPoint: .bottom))
+                                    .fill(LinearGradient(gradient: .init(colors: [Color("Color1"),Color("Color")]), startPoint: .top, endPoint: .bottom))
                                     .frame(height: 200)
                                 
                                 Text(work.day)
