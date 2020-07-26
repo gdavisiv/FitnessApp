@@ -51,12 +51,16 @@ struct Home: View {
                     HStack(spacing: 15) {
                         ForEach(workout_Data){ work in
                             VStack{
-                                Text("2.5")
-                                    .foregroundColor(Color("Color"))
-                                
-                                Rectangle()
-                                    .fill(LinearGradient(gradient: .init(colors: [Color("Color1"),Color("Color")]), startPoint: .top, endPoint: .bottom))
-                                    .frame(height: 200)
+                                VStack{
+                                    Text("2.5")
+                                        .foregroundColor(Color("Color"))
+                                        .padding(.bottom, 5)
+                                    
+                                    //Gradient Bars: Great UI Effect!
+                                    Rectangle()
+                                        .fill(LinearGradient(gradient: .init(colors: [Color("Color1"),Color("Color")]), startPoint: .top, endPoint: .bottom))
+                                        .frame(height: getHeight(value: work.workout_In_Min))
+                                }
                                 
                                 Text(work.day)
                                     .font(.caption)
@@ -65,11 +69,22 @@ struct Home: View {
                         }
                     }
                 }
+                .padding()
+                .background(Color.white.opacity(0.06))
+                .cornerRadius(10)
+                .padding()
             }
         }
         .background(Color.black.edgesIgnoringSafeArea(.all))
         //Enables Dark Mode
         .preferredColorScheme(.dark)
+    }
+    
+    func getHeight(value : CGFloat) -> CGFloat{
+        //Convert value into minutes
+        //24hrs = 1440 mins
+        let hrs = CGFloat(value / 1440) * 200
+        return hrs
     }
 }
 
