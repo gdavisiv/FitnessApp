@@ -52,6 +52,8 @@ struct Home: View {
                         ForEach(workout_Data){ work in
                             VStack{
                                 VStack{
+                                    Spacer(minLength: 0)
+                                    
                                     Text("2.5")
                                         .foregroundColor(Color("Color"))
                                         .padding(.bottom, 5)
@@ -61,6 +63,7 @@ struct Home: View {
                                         .fill(LinearGradient(gradient: .init(colors: [Color("Color1"),Color("Color")]), startPoint: .top, endPoint: .bottom))
                                         .frame(height: getHeight(value: work.workout_In_Min))
                                 }
+                                .frame(height: 220)
                                 
                                 Text(work.day)
                                     .font(.caption)
