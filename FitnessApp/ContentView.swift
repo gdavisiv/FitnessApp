@@ -60,10 +60,11 @@ struct Home: View {
                                 VStack{
                                     Spacer(minLength: 0)
                                     
-                                    Text("2.5")
-                                        .foregroundColor(Color("Color"))
-                                        .padding(.bottom, 5)
-                                    
+                                    if selected == work.id {
+                                        Text(getHrs(value: work.workout_In_Min))
+                                            .foregroundColor(Color("Color"))
+                                            .padding(.bottom, 5)
+                                    }
                                     //Gradient Bars: Great UI Effect!
                                     Rectangle()
                                         .fill(LinearGradient(gradient: .init(colors: selected == work.id ? colors : backgrnd), startPoint: .top, endPoint: .bottom))
@@ -95,11 +96,20 @@ struct Home: View {
         .preferredColorScheme(.dark)
     }
     
+    //Calculating the Hours and converting into a height
+    //Max height = 200
     func getHeight(value : CGFloat) -> CGFloat{
         //Convert value into minutes
         //24hrs = 1440 mins
         let hrs = CGFloat(value / 1440) * 200
         return hrs
+    }
+    
+    //Calculating Hours
+    func getHrs(value: CGFloat)->String{
+        let hrs = value / 60
+        
+        return String(format: "%.1f", hrs)
     }
 }
 
