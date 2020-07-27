@@ -20,6 +20,12 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 struct Home: View {
+    //Create state for onTapGesture
+    @State var selected = 0
+    //Create a variable Color array that can be called upon
+    var colors = [Color("Color1"), Color("Color")]
+    var backgrnd = [Color.white.opacity(0.06)]
+    
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack{
@@ -60,10 +66,16 @@ struct Home: View {
                                     
                                     //Gradient Bars: Great UI Effect!
                                     Rectangle()
-                                        .fill(LinearGradient(gradient: .init(colors: [Color("Color1"),Color("Color")]), startPoint: .top, endPoint: .bottom))
+                                        .fill(LinearGradient(gradient: .init(colors: selected == work.id ? colors : backgrnd), startPoint: .top, endPoint: .bottom))
                                         .frame(height: getHeight(value: work.workout_In_Min))
                                 }
                                 .frame(height: 220)
+                                //Simple Animation that allows you to select each bar for a specific day
+                                .onTapGesture {
+                                    withAnimation(.easeOut){
+                                        selected = work.id
+                                    }
+                                }
                                 
                                 Text(work.day)
                                     .font(.caption)
@@ -105,7 +117,7 @@ var workout_Data = [
     Daily(id: 1, day: "Day 2", workout_In_Min: 880),
     Daily(id: 2, day: "Day 3", workout_In_Min: 250),
     Daily(id: 3, day: "Day 4", workout_In_Min: 360),
-    Daily(id: 3, day: "Day 5", workout_In_Min: 1220),
-    Daily(id: 3, day: "Day 6", workout_In_Min: 750),
-    Daily(id: 3, day: "Day 7", workout_In_Min: 950)
+    Daily(id: 4, day: "Day 5", workout_In_Min: 1220),
+    Daily(id: 5, day: "Day 6", workout_In_Min: 750),
+    Daily(id: 6, day: "Day 7", workout_In_Min: 950)
 ]
