@@ -66,7 +66,7 @@ struct Home: View {
                                             .padding(.bottom, 5)
                                     }
                                     //Gradient Bars: Great UI Effect!
-                                    Rectangle()
+                                    RoundedShape()
                                         .fill(LinearGradient(gradient: .init(colors: selected == work.id ? colors : backgrnd), startPoint: .top, endPoint: .bottom))
                                         .frame(height: getHeight(value: work.workout_In_Min))
                                 }
@@ -89,6 +89,8 @@ struct Home: View {
                 .background(Color.white.opacity(0.06))
                 .cornerRadius(10)
                 .padding()
+                
+                
             }
         }
         .background(Color.black.edgesIgnoringSafeArea(.all))
@@ -113,8 +115,15 @@ struct Home: View {
     }
 }
 
-//Sample Data.. Struct + Array
+struct RoundedShape : Shape {
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: [.topLeft,.topRight], cornerRadii: CGSize(width: 5, height: 5))
+        
+        return Path(path.cgPath)
+    }
+}
 
+//Sample Data.. Struct + Array
 struct Daily : Identifiable {
     var id : Int
     var day : String
