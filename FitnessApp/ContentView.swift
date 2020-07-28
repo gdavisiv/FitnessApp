@@ -90,7 +90,23 @@ struct Home: View {
                 .cornerRadius(10)
                 .padding()
                 
-                
+                HStack{
+                    Text("Statistics")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
+                    
+                    Spacer(minLength: 0)
+                    
+                    Button(action: {}) {
+                        Image(systemName: "slider.horizontal.3")
+                            //.renderingMode(.original)
+                            .resizable()
+                            .frame(width: 35, height: 30)
+                            .foregroundColor(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)))
+                    }
+                }
+                .padding(.horizontal, 30)
             }
         }
         .background(Color.black.edgesIgnoringSafeArea(.all))
@@ -139,4 +155,21 @@ var workout_Data = [
     Daily(id: 4, day: "Day 5", workout_In_Min: 1220),
     Daily(id: 5, day: "Day 6", workout_In_Min: 750),
     Daily(id: 6, day: "Day 7", workout_In_Min: 950)
+]
+
+struct Stats : Identifiable {
+    var id : Int
+    var title : String
+    var currentData : CGFloat
+    var goal : CGFloat
+    var color : Color
+}
+
+var stats_Data = [
+    Stats(id: 0, title: "Running", currentData: 6.8, goal: 15, color: Color("running")),
+    Stats(id: 1, title: "Water", currentData: 6.8, goal: 15, color: Color("water")),
+    Stats(id: 2, title: "Calories Burned", currentData: 6.8, goal: 15, color: Color("energy")),
+    Stats(id: 3, title: "Sleep", currentData: 6.8, goal: 15, color: Color("sleep")),
+    Stats(id: 4, title: "Cycling", currentData: 6.8, goal: 15, color: Color("cycle")),
+    Stats(id: 5, title: "Steps", currentData: 6.8, goal: 15, color: Color("steps"))
 ]
