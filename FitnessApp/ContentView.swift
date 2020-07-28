@@ -25,6 +25,7 @@ struct Home: View {
     //Create a variable Color array that can be called upon
     var colors = [Color("Color1"), Color("Color")]
     var backgrnd = [Color.white.opacity(0.06)]
+    var columns = Array(repeating: GridItem(.flexible(), spacing: 20), count: 2)
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -106,7 +107,36 @@ struct Home: View {
                             .foregroundColor(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)))
                     }
                 }
-                .padding(.horizontal, 30)
+                .padding()
+                
+                LazyVGrid(columns: columns,spacing: 30){
+                    ForEach(stats_Data){ stats in
+                        VStack(spacing: 22){
+                            HStack{
+                                Text(stats.title)
+                                    .font(.system(size: 22))
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)))
+                                
+                                Spacer(minLength: 0)
+                            }
+                                //Ring
+                                ZStack{
+                                    Circle()
+                                        .trim(from: 0, to: 1)
+                                        .stroke(stats.color.opacity(0.25), lineWidth: 10)
+                                        .frame(width: (UIScreen.main.bounds.width - 150)/2, height: (UIScreen.main.bounds.width - 150) / 2)
+                                    Circle()
+                                        .trim(from: 0, to: (stats.currentData / stats.goal))
+                                        .stroke(stats.color, lineWidth: 10)
+                                        .frame(width: (UIScreen.main.bounds.width - 150)/2, height: (UIScreen.main.bounds.width - 150) / 2)
+                                }
+                            }
+                            .padding()
+                            .background(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)).opacity(0.06))
+                            .cornerRadius(15)
+                    }
+                }
             }
         }
         .background(Color.black.edgesIgnoringSafeArea(.all))
@@ -167,9 +197,9 @@ struct Stats : Identifiable {
 
 var stats_Data = [
     Stats(id: 0, title: "Running", currentData: 6.8, goal: 15, color: Color("running")),
-    Stats(id: 1, title: "Water", currentData: 6.8, goal: 15, color: Color("water")),
-    Stats(id: 2, title: "Calories Burned", currentData: 6.8, goal: 15, color: Color("energy")),
-    Stats(id: 3, title: "Sleep", currentData: 6.8, goal: 15, color: Color("sleep")),
-    Stats(id: 4, title: "Cycling", currentData: 6.8, goal: 15, color: Color("cycle")),
-    Stats(id: 5, title: "Steps", currentData: 6.8, goal: 15, color: Color("steps"))
+    Stats(id: 1, title: "Water", currentData: 3.5, goal: 5, color: Color("water")),
+    Stats(id: 2, title: "Calories Burned", currentData: 585, goal: 1000, color: Color("energy")),
+    Stats(id: 3, title: "Sleep", currentData: 6.2, goal: 8, color: Color("sleep")),
+    Stats(id: 4, title: "Cycling", currentData: 12.5, goal: 25, color: Color("cycle")),
+    Stats(id: 5, title: "Steps", currentData: 16889, goal: 20000, color: Color("steps"))
 ]
