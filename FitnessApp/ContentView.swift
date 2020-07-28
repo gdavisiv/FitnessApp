@@ -130,11 +130,20 @@ struct Home: View {
                                         .trim(from: 0, to: (stats.currentData / stats.goal))
                                         .stroke(stats.color, lineWidth: 10)
                                         .frame(width: (UIScreen.main.bounds.width - 150)/2, height: (UIScreen.main.bounds.width - 150) / 2)
+                                    Text(getPercent(current: stats.currentData, Goal: stats.goal))
+                                        .font(.system(size: 22))
+                                        .fontWeight(.bold)
+                                        .foregroundColor(stats.color)
+                                        //Rotates the bar so it begins at 12'clock
+                                        .rotationEffect(.init(degrees: 90))
                                 }
+                                //Fixes rotation on all elements in HStack
+                                .rotationEffect(.init(degrees: -90))
                             }
                             .padding()
                             .background(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)).opacity(0.06))
                             .cornerRadius(15)
+                        .shadow(color: Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)).opacity(0.2), radius: 10, x: 0, y: 0)
                     }
                 }
             }
@@ -142,6 +151,12 @@ struct Home: View {
         .background(Color.black.edgesIgnoringSafeArea(.all))
         //Enables Dark Mode
         .preferredColorScheme(.dark)
+    }
+    
+    //Calculates the percentage for the stats area
+    func getPercent(current: CGFloat, Goal : CGFloat)->String{
+        let per = (current / Goal) * 100
+        return String(format: "%.1f", per)
     }
     
     //Calculating the Hours and converting into a height
