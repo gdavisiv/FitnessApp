@@ -69,9 +69,9 @@ struct Home: View {
                                     //Gradient Bars: Great UI Effect!
                                     RoundedShape()
                                         .fill(LinearGradient(gradient: .init(colors: selected == work.id ? colors : backgrnd), startPoint: .top, endPoint: .bottom))
-                                        .frame(height: getHeight(value: work.workout_In_Min))
+                                        .frame(height: getHeight(value: (work.workout_In_Min) * 3))
                                 }
-                                .frame(height: 220)
+                                .frame(height: 120)
                                 //Simple Animation that allows you to select each bar for a specific day
                                 .onTapGesture {
                                     withAnimation(.easeOut){
@@ -193,13 +193,13 @@ struct Daily : Identifiable {
 
 var workout_Data = [
 
-    Daily(id: 0, day: "Day 1", workout_In_Min: 480),
-    Daily(id: 1, day: "Day 2", workout_In_Min: 880),
-    Daily(id: 2, day: "Day 3", workout_In_Min: 250),
-    Daily(id: 3, day: "Day 4", workout_In_Min: 360),
-    Daily(id: 4, day: "Day 5", workout_In_Min: 1220),
-    Daily(id: 5, day: "Day 6", workout_In_Min: 750),
-    Daily(id: 6, day: "Day 7", workout_In_Min: 950)
+    Daily(id: 0, day: "Day 1", workout_In_Min: 60),
+    Daily(id: 1, day: "Day 2", workout_In_Min: 100),
+    Daily(id: 2, day: "Day 3", workout_In_Min: 120),
+    Daily(id: 3, day: "Day 4", workout_In_Min: 80),
+    Daily(id: 4, day: "Day 5", workout_In_Min: 180),
+    Daily(id: 5, day: "Day 6", workout_In_Min: 115),
+    Daily(id: 6, day: "Day 7", workout_In_Min: 75)
 ]
 
 struct Stats : Identifiable {
