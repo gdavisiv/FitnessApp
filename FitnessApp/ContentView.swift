@@ -130,7 +130,7 @@ struct Home: View {
                                         .trim(from: 0, to: (stats.currentData / stats.goal))
                                         .stroke(stats.color, style: StrokeStyle(lineWidth: 10, lineCap: .butt))
                                         .frame(width: (UIScreen.main.bounds.width - 150)/2, height: (UIScreen.main.bounds.width - 150) / 2)
-                                    Text(getPercent(current: stats.currentData, Goal: stats.goal))
+                                    Text(getPercent(current: stats.currentData, Goal: stats.goal) + " %")
                                         .font(.system(size: 22))
                                         .fontWeight(.bold)
                                         .foregroundColor(stats.color)
@@ -139,6 +139,12 @@ struct Home: View {
                                 }
                                 //Fixes rotation on all elements in HStack
                                 .rotationEffect(.init(degrees: -90))
+                            
+                                Text(getDec(val: stats.currentData) + " " + getType(val: stats.title))
+                                    .font(.system(size: 22))
+                                    .foregroundColor(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)))
+                                    .fontWeight(.bold)
+                                    .shadow(color: Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)).opacity(0.2), radius: 10, x: 0, y: 0)
                             }
                             .padding()
                             .background(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)).opacity(0.06))
@@ -159,15 +165,20 @@ struct Home: View {
         switch val {
             case "Water": return "L"
             case "Sleep": return "Hrs"
-            case "Running": return "Miles"
-            case "Cycling": return "Miles"
+            case "Running": return "Mi"
+            case "Cycling": return "Mi"
             case "Steps": return "Steps"
             default: return "Kcal"
         }
     }
     
     //Converting Numbers to Decimals
-    
+    func getDec(val: CGFloat)->String{
+        let format = NumberFormatter()
+        format.numberStyle = .decimal
+        
+        return format.string(from: NSNumber.init(value: Float(val)))!
+    }
     
     //Calculates the percentage for the stats area
     func getPercent(current: CGFloat, Goal : CGFloat)->String{
