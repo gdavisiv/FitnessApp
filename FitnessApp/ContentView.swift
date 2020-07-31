@@ -64,7 +64,7 @@ struct Home: View {
                                     if selected == work.id {
                                         Text(getHrs(value: work.workout_In_Min))
                                             .foregroundColor(Color("Color"))
-                                            .padding(.bottom, 5)
+                                            .padding(.bottom)
                                     }
                                     //Gradient Bars: Great UI Effect!
                                     RoundedShape()
@@ -92,7 +92,7 @@ struct Home: View {
                 .padding()
                 
                 HStack{
-                    Text("Statistics")
+                    Text("Breakdown")
                         .font(.title)
                         .fontWeight(.bold)
                         .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
@@ -128,7 +128,7 @@ struct Home: View {
                                         .frame(width: (UIScreen.main.bounds.width - 150)/2, height: (UIScreen.main.bounds.width - 150) / 2)
                                     Circle()
                                         .trim(from: 0, to: (stats.currentData / stats.goal))
-                                        .stroke(stats.color, lineWidth: 10)
+                                        .stroke(stats.color, style: StrokeStyle(lineWidth: 10, lineCap: .butt))
                                         .frame(width: (UIScreen.main.bounds.width - 150)/2, height: (UIScreen.main.bounds.width - 150) / 2)
                                     Text(getPercent(current: stats.currentData, Goal: stats.goal))
                                         .font(.system(size: 22))
@@ -143,7 +143,8 @@ struct Home: View {
                             .padding()
                             .background(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)).opacity(0.06))
                             .cornerRadius(15)
-                        .shadow(color: Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)).opacity(0.2), radius: 10, x: 0, y: 0)
+                            .shadow(color: Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)).opacity(0.2), radius: 10, x: 0, y: 0)
+                        
                     }
                 }
             }
@@ -152,6 +153,21 @@ struct Home: View {
         //Enables Dark Mode
         .preferredColorScheme(.dark)
     }
+    
+    //Calculating the Type..
+    func getType(val: String)->String{
+        switch val {
+            case "Water": return "L"
+            case "Sleep": return "Hrs"
+            case "Running": return "Miles"
+            case "Cycling": return "Miles"
+            case "Steps": return "Steps"
+            default: return "Kcal"
+        }
+    }
+    
+    //Converting Numbers to Decimals
+    
     
     //Calculates the percentage for the stats area
     func getPercent(current: CGFloat, Goal : CGFloat)->String{
