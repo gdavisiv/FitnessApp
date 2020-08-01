@@ -153,6 +153,7 @@ struct Home: View {
                         
                     }
                 }
+                .padding(.horizontal, 8)
             }
         }
         .background(Color.black.edgesIgnoringSafeArea(.all))
@@ -240,7 +241,7 @@ struct Stats : Identifiable {
 var stats_Data = [
     Stats(id: 0, title: "Running", currentData: 6.8, goal: 15, color: Color("running")),
     Stats(id: 1, title: "Water", currentData: 3.5, goal: 5, color: Color("water")),
-    Stats(id: 2, title: "Calories Burned", currentData: 585, goal: 1000, color: Color("energy")),
+    Stats(id: 2, title: "Calories", currentData: 585, goal: 1000, color: Color("energy")),
     Stats(id: 3, title: "Sleep", currentData: 6.2, goal: 8, color: Color("sleep")),
     Stats(id: 4, title: "Cycling", currentData: 12.5, goal: 25, color: Color("cycle")),
     Stats(id: 5, title: "Steps", currentData: 16889, goal: 20000, color: Color("steps"))
