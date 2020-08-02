@@ -99,13 +99,6 @@ struct Home: View {
                     
                     Spacer(minLength: 0)
                     
-                    Button(action: {}) {
-                        Image(systemName: "slider.horizontal.3")
-                            //.renderingMode(.original)
-                            .resizable()
-                            .frame(width: 35, height: 30)
-                            .foregroundColor(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)))
-                    }
                 }
                 .padding()
                 
