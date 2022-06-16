@@ -9,8 +9,8 @@ This project is a Fitness Demo to better understand the new Swift UI Syntax, and
 ### Screenshots
 
 <p align="center">
-<img src="https://github.com/gdavisiv/CircularSlider/blob/main/CS1.png" height="600" width="300">
-<img src="https://github.com/gdavisiv/CircularSlider/blob/main/CS2.png" height="600" width="300">
+<img src="https://github.com/gdavisiv/FitnessApp/blob/main/F1.png" height="600" width="300">
+<img src="https://github.com/gdavisiv/FitnessApp/blob/main/F2.png" height="600" width="300">
 </p>
 
 ### Prerequisites
